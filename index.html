@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AAA Tic-Tac-Toe</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, #141e30, #243b55);
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADER */
+header {
+  background-color: #ffffff;
+  padding: 20px;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+}
+
+.top-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+}
+
+.top-header img {
+  width: 70px;
+  height: auto;
+  margin: 10px 15px;
+  border-radius: 10px;
+}
+
+.header-content h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1e3c72;
+}
+
+nav {
+  background-color: #1e3c72;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+nav a:hover {
+  color: #00d4ff;
+  transform: scale(1.1);
+}
+
+main {
+  flex: 1;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 2.2rem;
+  margin-bottom: 25px;
+  color: #fff;
+}
+
+/* GAME BOARD */
+.game {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  gap: 15px;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  font-size: 2.5rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  text-shadow: 0 0 10px #00ffff;
+}
+
+.box:hover:not(:disabled) {
+  background-color: rgba(0, 255, 255, 0.15);
+  transform: scale(1.08);
+  box-shadow: 0 0 12px #00ffff;
+}
+
+.box:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* BUTTONS */
+button {
+  font-size: 1rem;
+  padding: 12px 25px;
+  margin: 15px 10px;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(to right, #00d2ff, #3a47d5);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+button:hover {
+  transform: translateY(-3px) scale(1.05);
+  background: linear-gradient(to right, #3a47d5, #00d2ff);
+}
+
+.win-msg {
+  margin-top: 20px;
+}
+
+#msg {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #00ff88;
+  text-shadow: 0 0 6px #00ffcc;
+  margin-bottom: 10px;
+}
+
+.hide {
+  display: none;
+}
+
+/* FOOTER */
+footer {
+  background-color: #1e3c72;
+  color: #ffffff;
+  padding: 20px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* RESPONSIVENESS */
+@media (max-width: 768px) {
+  .game {
+    grid-template-columns: repeat(3, 80px);
+    gap: 12px;
+  }
+
+  .box {
+    width: 80px;
+    height: 80px;
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .top-header {
+    flex-direction: column;
+  }
+
+  .header-content h1 {
+    font-size: 1.8rem;
+    margin: 10px 0;
+  }
+
+  nav {
+    flex-direction: column;
+    gap: 12px;
+    padding: 15px 10px;
+  }
+}
+</style>
+  
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="top-header">
+      <img src="https://img.freepik.com/free-vector/hands-holding-pencils-play-tic-tac-toe-people-drawing-crosses-noughts-simple-game-children-flat-vector-illustration-strategy-concept-banner-website-design-landing-web-page_74855-24786.jpg?semt=ais_hybrid&w=740" alt="AAA Logo" />
+      <div class="header-content">
+        <h1>TIC-TAC-TOE</h1>
+        <!-- <p>Add - Shop No.68, Sattar Auto Garage, Sant Mary Church Road,<br> Kalina Donger, Santacruz East, Mumbai 400029</p> -->
+      </div>
+    </div>
+  </header>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <a href="#">TIC-TAC-TOE</a>
+  </nav>
+
+  <!-- MAIN GAME -->
+  <main>
+    <h2>Play Tic-Tac-Toe</h2>
+
+    <div class="game">
+      <button class="box"></button>
+      <button class="box"></button>
+      <button class="box"></button>
+      <button class="box"></button>
+      <button class="box"></button>
+      <button class="box"></button>
+      <button class="box"></button>
+      <button class="box"></button>
+      <button class="box"></button>
+    </div>
+
+    <div class="win-msg">
+      <p id="msg" class="hide">Winner</p>
+      <button id="new-btn">New Game</button>
+    </div>
+
+    <button id="rst-btn">Reset Game</button>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 AAA POWER ENTERPRISES. All rights reserved.</p>
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    const boxes = document.querySelectorAll(".box");
+    const resetBtn = document.querySelector("#rst-btn");
+    const newBtn = document.querySelector("#new-btn");
+    const msg = document.querySelector("#msg");
+    let turnO = true;
+
+    const winPatterns = [
+      [0, 1, 2], [3, 4, 5], [6, 7, 8],
+      [0, 3, 6], [1, 4, 7], [2, 5, 8],
+      [0, 4, 8], [2, 4, 6],
+    ];
+
+    const resetGame = () => {
+      turnO = true;
+      enableBoxes();
+      msg.classList.add("hide");
+      boxes.forEach(box => box.innerText = "");
+    };
+
+    const enableBoxes = () => {
+      boxes.forEach(box => box.disabled = false);
+    };
+
+    const disableBoxes = () => {
+      boxes.forEach(box => box.disabled = true);
+    };
+
+    const showWinner = (winner) => {
+      msg.innerText = `Player ${winner} wins!`;
+      msg.classList.remove("hide");
+      disableBoxes();
+    };
+
+    const checkWinner = () => {
+      for (let pattern of winPatterns) {
+        let pos1 = boxes[pattern[0]].innerText;
+        let pos2 = boxes[pattern[1]].innerText;
+        let pos3 = boxes[pattern[2]].innerText;
+
+        if (pos1 && pos1 === pos2 && pos2 === pos3) {
+          showWinner(pos1);
+        }
+      }
+    };
+
+    boxes.forEach((box) => {
+      box.addEventListener("click", () => {
+        if (turnO) {
+          box.innerText = "O";
+        } else {
+          box.innerText = "X";
+        }
+        box.disabled = true;
+        turnO = !turnO;
+        checkWinner();
+      });
+    });
+
+    resetBtn.addEventListener("click", resetGame);
+    newBtn.addEventListener("click", resetGame);
+  </script>
+
+</body>
+</html>
